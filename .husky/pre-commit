@@ -1,17 +1,24 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-# Executa os testes unitários
-npm test
+# Executa os testes com cobertura
+npx lint-staged
 
-# Inicia o servidor em segundo plano
+# Verifica se a cobertura mínima foi atingida
+if [ $? -ne 0 ]; then
+  echo "❌ Commit abortado! A cobertura de testes não atende aos requisitos mínimos."
+  exit 1
+fi
+
+# Inicia o servidor em segundo plano para Cypress
 npm run dev &
+SERVER_PID=$!
 
-# Aguarda o servidor iniciar antes de executar o Cypress
+# Aguarda o servidor iniciar
 sleep 5
 
 # Executa os testes do Cypress
 npx cypress run
 
-# Mata o servidor iniciado em segundo plano
-kill $!
+# Finaliza o servidor
+kill $SERVER_PID
