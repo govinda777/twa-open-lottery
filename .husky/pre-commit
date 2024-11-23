@@ -1,12 +1,14 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
-# Executa os testes com cobertura
-npx lint-staged
+echo "🔍 Executando testes..."
 
-# Verifica se a cobertura mínima foi atingida
-if [ $? -ne 0 ]; then
-  echo "❌ Commit abortado! A cobertura de testes não atende aos requisitos mínimos."
+# Executa todos os testes
+npx jest --bail
+TEST_EXIT_CODE=$?
+
+if [ $TEST_EXIT_CODE -ne 0 ]; then
+  echo "❌ Commit abortado! Há testes falhando."
   exit 1
 fi
 
@@ -22,3 +24,7 @@ npx cypress run
 
 # Finaliza o servidor
 kill $SERVER_PID
+
+echo "✅ Todos os testes passaram. Continuando o commit."
+exit 0
+
