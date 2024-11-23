@@ -7,39 +7,53 @@ export function TransferTon() {
   const { sender, connected } = useTonConnect();
   const [tonAmount, setTonAmount] = useState('0.01');
   const [tonRecipient, setTonRecipient] = useState('EQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAM9c');
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handleTransfer = async () => {
+    try {
+      setIsLoading(true);
+      await sender.send({
+        to: Address.parse(tonRecipient),
+        value: toNano(tonAmount),
+      });
+    } catch (error) {
+      console.error('Error transferring TON:', error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <Card>
       <FlexBoxCol>
-        <h3>Transfer TON</h3>
+        <h3>Transferir TON</h3>
         <FlexBoxRow>
-          <label>Amount </label>
+          <label>Quantidade</label>
           <Input
             style={{ marginRight: 8 }}
             type="number"
             value={tonAmount}
             onChange={(e) => setTonAmount(e.target.value)}
-          ></Input>
+            disabled={!connected || isLoading}
+            min="0.01"
+            step="0.01"
+          />
         </FlexBoxRow>
         <FlexBoxRow>
-          <label>To </label>
+          <label>Destinatário</label>
           <Input
             style={{ marginRight: 8 }}
             value={tonRecipient}
             onChange={(e) => setTonRecipient(e.target.value)}
-          ></Input>
+            disabled={!connected || isLoading}
+            placeholder="Endereço TON"
+          />
         </FlexBoxRow>
         <Button
-          disabled={!connected}
-          style={{ marginTop: 18 }}
-          onClick={async () => {
-            sender.send({
-              to: Address.parse(tonRecipient),
-              value: toNano(tonAmount),
-            });
-          }}
+          disabled={!connected || isLoading}
+          onClick={handleTransfer}
         >
-          Transfer
+          {isLoading ? 'Processando...' : 'Transferir'}
         </Button>
       </FlexBoxCol>
     </Card>

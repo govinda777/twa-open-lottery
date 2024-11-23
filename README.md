@@ -113,6 +113,12 @@ Este projeto oferece:
 - Relatórios em tempo real
 - Controle de regiões
 
+## Vantagens
+
+- Apostas transparentes e desentralizadas
+- Segurança e confiabilidade
+- Auditoria aberta e simplificada
+
 ## 🤝 Contribuindo
 
 1. Faça um Fork
