@@ -1,4 +1,17 @@
 #!/usr/bin/env sh
 . "$(dirname -- "$0")/_/husky.sh"
 
+# Executa os testes unitários
 npm test
+
+# Inicia o servidor em segundo plano
+npm run dev &
+
+# Aguarda o servidor iniciar antes de executar o Cypress
+sleep 5
+
+# Executa os testes do Cypress
+npx cypress run
+
+# Mata o servidor iniciado em segundo plano
+kill $!
