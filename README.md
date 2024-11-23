@@ -1,110 +1,139 @@
+# TWA Open Lottery
 
-# TWA Open Lottery Template
+[![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/govinda777/twa-open-lottery/blob/main/LICENSE)
+[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/mermaid-js/mermaid-live-editor/CI)](https://github.com/govinda777/twa-open-lottery)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/27fa023d-7c73-4a3f-9791-b3b657a47100/deploy-status)](https://app.netlify.com/sites/twa-lottery/deploys)
 
-[![GitHub Workflow Status](https://img.shields.io/github/workflow/status/mermaid-js/mermaid-live-editor/CI)](
-[![Cypress Tests](https://img.shields.io/endpoint?url=https://dashboard.cypress.io/badge/detailed/2ckppp/master&style=flat&logo=cypress)](https://dashboard.cypress.io/projects/2ckppp/runs)
-[![Join our Slack!](https://img.shields.io/static/v1?message=join%20chat&color=9cf&logo=slack&label=slack)](https://join.slack.com/t/mermaid-talk/shared_invite/enQtNzc4NDIyNzk4OTAyLWVhYjQxOTI2OTg4YmE1ZmJkY2Y4MTU3ODliYmIwOTY3NDJlYjA0YjIyZTdkMDMyZTUwOGI0NjEzYmEwODcwOTE)
-[![Netlify Status](https://api.netlify.com/api/v1/badges/27fa023d-7c73-4a3f-9791-b3b657a47100/deploy-status)](https://app.netlify.com/sites/mermaidjs/deploys)
+Bem-vindo ao **TWA Open Lottery**, uma plataforma SaaS (Software como Serviço) desenvolvida para modernizar e tornar transparente o gerenciamento de apostas e loterias através do Telegram Web App (TWA).
 
-npx husky install
-HUSKY_DEBUG=1 git commit -m "up"
+🔗 [Repositório no GitHub](https://github.com/govinda777/twa-open-lottery)
 
+## 📋 Índice
 
-> Um template inicial para criar uma TWA (Telegram Web App) que interage com a blockchain TON.
+1. [Visão Geral](#-visão-geral)
+2. [Pré-requisitos](#-pré-requisitos)
+3. [Início Rápido](#-início-rápido)
+4. [Configuração do Web App](#-configuração-do-web-app)
+5. [Desenvolvimento](#-desenvolvimento)
+6. [Principais Funcionalidades](#-principais-funcionalidades)
+7. [Contribuindo](#-contribuindo)
+8. [Licença](#-licença)
 
-## Visão Geral
+## 📖 Visão Geral
 
-Este projeto é altamente opinativo, servindo como um ponto de partida para o desenvolvimento de aplicativos web no Telegram que interagem com a blockchain TON. Algumas características incluem:
-
+Este projeto oferece:
 - **Suporte a carteiras Ton Connect 2**
-- **Utiliza Vite com React** (alternativa ao Create React App)
-- **Usa o pacote `ton` do npm**
+- **Stack moderna com Vite + React**
+- **Integração com blockchain TON**
+- **Sistema completo de apostas e sorteios**
+- **Interface TWA otimizada**
 
-## Pré-requisitos
+## 🔧 Pré-requisitos
 
-- **Node.js v16** (outras versões podem funcionar, mas precisam ser testadas)
-- **Uma carteira compatível com Ton Connect** (por exemplo, [Tonkeeper](https://tonkeeper.com/))
+- Node.js v16+
+- Uma carteira compatível com Ton Connect (ex: [Tonkeeper](https://tonkeeper.com/))
+- Conta no Telegram
+- Git
 
-## O que este repositório contém?
+## 🚀 Início Rápido
 
-- Um aplicativo pronto para TWA baseado em React, interagindo com a TON
-- Configurações do GitHub Actions para implantar o app no GitHub Pages
-- Um script para conectar um bot do Telegram ao aplicativo implantado
-
-## Como Usar
-
-1. **Crie um repositório a partir deste template usando o botão "Use this template"**
-
-   - Escolha um nome para o seu repositório
-   - **IMPORTANTE:** Marque a opção "Include all branches" para que a implantação no GitHub Pages funcione corretamente.
-
-     ![Incluir todas as branches](https://user-images.githubusercontent.com/5641469/191731317-14e742fd-accb-47d4-a794-fad01148a377.png)
-
-2. **Clone o repositório e instale as dependências**
-
+1. **Use este template**
    ```bash
-   git clone https://github.com/seu-usuario/seu-repositorio.git
-   cd seu-repositorio
-   yarn
-   # ou
+   # Clique no botão "Use this template" no GitHub
+   # IMPORTANTE: Marque "Include all branches"
+   ```
+
+2. **Clone e Configure**
+   ```bash
+   # Clone seu novo repositório
+   git clone https://github.com/seu-usuario/seu-twa-lottery.git
+   cd seu-twa-lottery
+
+   # Instale as dependências
    npm install
+
+   # Configure os hooks do Git
+   npx husky install
    ```
 
-2.1 Para executar a pipeline na sua máquina local execute o comando abaixo:
+## ⚙️ Configuração do Web App
 
-    ```bash
-    chmod +x pipeline.sh
-    ```
-
-3. **Crie um novo bot com o [BotFather](https://t.me/botfather)**
-
-   - Digite `/newbot`
-   - Escolha um nome para o seu bot (ex: `Meu Ecomm TWA`)
-   - Escolha um nome de usuário para o seu bot (ex: `meu_ecomm_twa_bot`)
-   - Anote o token de acesso fornecido (ex: `123456789:ABCdefGHIjklMNOpqrSTUvwxYZ`)
-   - Execute `yarn configbot` ou `npm run configbot` para vincular seu bot ao aplicativo web
-
-## Criando um novo Web App no Telegram
-
-1. **Inicie uma conversa com o [BotFather](https://t.me/botfather)** e digite o comando `/newapp`.
-
+1. **Crie um Bot no Telegram**
    ```bash
-   /newapp
+   # Abra @BotFather no Telegram
+   /newbot
+   # Siga as instruções para nomear seu bot
+   # Guarde o token fornecido
    ```
 
-2. **Selecione o bot que oferecerá o Web App**:
-   - Escolha o bot que você criou anteriormente (por exemplo: `@govinda_systems_bot`).
+2. **Crie o Web App**
+   ```bash
+   # No BotFather
+   /newapp
+   # Selecione seu bot
+   # Digite o título: "TWA Lottery"
+   # Forneça uma descrição
+   # Envie uma imagem 640x360px
+   ```
 
-3. **Digite um título para o Web App**:
-   - Exemplo: `Govinda Systems E-comm`.
+3. **Vincule o Bot ao App**
+   ```bash
+   # Execute o script de configuração
+   npm run configbot
+   # Insira o token do bot quando solicitado
+   ```
 
-4. **Forneça uma breve descrição**:
-   - Exemplo: `Template inicial de E-commerce utilizando TON blockchain e Telegram Web Apps (TWA)`.
+## 💻 Desenvolvimento
 
-5. **Envie uma imagem de visualização** (dimensões recomendadas: 640x360 pixels).
-
-   - Depois de completar esses passos, o Web App estará pronto para ser vinculado ao bot e usado dentro do Telegram.
-
-## Desenvolvimento
-
-1. **Inicie o ambiente de desenvolvimento**
-
+1. **Inicie o Ambiente Local**
    ```bash
    npm run dev
    ```
 
-2. **Edite o código conforme necessário**
+2. **Implantação**
+   ```bash
+   # A implantação é automática ao fazer push para main
+   git push origin main
+   ```
 
-   - O aplicativo recarregará automaticamente com as mudanças.
+## 🎯 Principais Funcionalidades
 
-3. **Implantação automática**
+### Sistema de Apostas
+- Interface intuitiva para apostas
+- Integração com TON Connect 2
+- Registro na blockchain
 
-   - Ao fazer push para a branch `main`, o aplicativo será implantado automaticamente via GitHub Actions.
+### Gestão de Pagamentos
+- Smart contracts automatizados
+- Distribuição segura de prêmios
+- Histórico transparente
 
-## Contribuição
+### Administração
+- Dashboard para gestores
+- Relatórios em tempo real
+- Controle de regiões
 
-Contribuições são bem-vindas! Sinta-se à vontade para abrir issues ou pull requests. Vamos construir juntos uma comunidade forte em torno deste projeto.
+## 🤝 Contribuindo
 
-## Licença
+1. Faça um Fork
+2. Crie sua Feature Branch
+   ```bash
+   git checkout -b feature/NovaFuncionalidade
+   ```
+3. Commit suas mudanças
+   ```bash
+   git commit -m 'Adiciona nova funcionalidade'
+   ```
+4. Push para a Branch
+   ```bash
+   git push origin feature/NovaFuncionalidade
+   ```
+5. Abra um Pull Request
 
-Este projeto está licenciado sob a Licença MIT.
+## 📄 Licença
+
+Este projeto está sob a Licença MIT. Veja o arquivo [LICENSE](LICENSE) para detalhes.
+
+---
+
+⭐️ Se este projeto te ajudou, considere dar uma estrela no GitHub!
