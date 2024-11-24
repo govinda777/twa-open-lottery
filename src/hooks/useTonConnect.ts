@@ -7,9 +7,13 @@ export function useTonConnect(): {
   connected: boolean;
   wallet: string | null;
   network: CHAIN | null;
+  isOwner: boolean;
 } {
   const [tonConnectUI] = useTonConnectUI();
   const wallet = useTonWallet();
+
+  // Endereço do owner do contrato
+  const OWNER_ADDRESS = "EQB8StgTQXidy32a8xfu7j4HMoWYV0b0cFM8nXsP2cza_b7Y";
 
   return {
     sender: {
@@ -29,5 +33,6 @@ export function useTonConnect(): {
     connected: !!wallet?.account.address,
     wallet: wallet?.account.address ?? null,
     network: wallet?.account.chain ?? null,
+    isOwner: wallet?.account.address === OWNER_ADDRESS
   };
 }

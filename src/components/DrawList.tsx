@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';  // Adicionado o useState
 import { useAnimalLottery } from '../hooks/useAnimalLottery';
 import { useTonConnect } from '../hooks/useTonConnect';
 import { Card, FlexBoxCol, FlexBoxRow, Button } from './styled/styled';

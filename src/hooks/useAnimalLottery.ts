@@ -12,7 +12,7 @@ export function useAnimalLottery() {
   const lotteryContract = useAsyncInitialize(async () => {
     if (!client) return;
     const contract = new AnimalLottery(
-      Address.parse("EQB8StgTQXidy32a8xfu7j4HMoWYV0b0cFM8nXsP2cza_b7Y") // Replace with your contract address
+      Address.parse("EQB8StgTQXidy32a8xfu7j4HMoWYV0b0cFM8nXsP2cza_b7Y")
     );
     return client.open(contract) as OpenedContract<AnimalLottery>;
   }, [client]);
@@ -24,6 +24,7 @@ export function useAnimalLottery() {
       return await lotteryContract.getCurrentDraw();
     },
     refetchInterval: 5000,
+    enabled: !!lotteryContract,
   });
 
   const { data: currentBets, isLoading: isLoadingBets } = useQuery({
@@ -33,6 +34,7 @@ export function useAnimalLottery() {
       return await lotteryContract.getBets();
     },
     refetchInterval: 5000,
+    enabled: !!lotteryContract,
   });
 
   return {
@@ -40,16 +42,16 @@ export function useAnimalLottery() {
     currentDraw: isLoadingDraw ? null : currentDraw,
     currentBets: isLoadingBets ? null : currentBets,
     placeBet: async (animal: number, amount: string) => {
-      if (!lotteryContract) throw new Error("Contract not initialized");
-      return await lotteryContract.placeBet(sender, animal, amount);
+      if (!lotteryContract || !client) throw new Error("Contract not initialized");
+      return await lotteryContract.placeBet(client.provider, sender, animal, amount);
     },
     claimPrize: async (drawId: number) => {
-      if (!lotteryContract) throw new Error("Contract not initialized");
-      return await lotteryContract.claimPrize(sender, drawId);
+      if (!lotteryContract || !client) throw new Error("Contract not initialized");
+      return await lotteryContract.claimPrize(client.provider, sender, drawId);
     },
     processDraw: async (winningAnimal: number) => {
-      if (!lotteryContract) throw new Error("Contract not initialized");
-      return await lotteryContract.processDraw(sender, winningAnimal);
+      if (!lotteryContract || !client) throw new Error("Contract not initialized");
+      return await lotteryContract.processDraw(client.provider, sender, winningAnimal);
     },
   };
 }
