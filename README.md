@@ -1,5 +1,9 @@
 # TWA Open Lottery
 
+![TWA Open Lottery diagram](./docs/TWA_Open_Lottery.png)
+
+[![Netlify Status](https://api.netlify.com/api/v1/badges/27fa023d-7c73-4a3f-9791-b3b657a47100/deploy-status)](https://app.netlify.com/sites/twa-lottery/deploys)
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/govinda777/twa-open-lottery/blob/main/LICENSE)
 [![GitHub Workflow Status](https://img.shields.io/github/workflow/status/mermaid-js/mermaid-live-editor/CI)](https://github.com/govinda777/twa-open-lottery)
 [![Netlify Status](https://api.netlify.com/api/v1/badges/27fa023d-7c73-4a3f-9791-b3b657a47100/deploy-status)](https://app.netlify.com/sites/twa-lottery/deploys)
@@ -118,6 +122,63 @@ Este projeto oferece:
 - Apostas transparentes e desentralizadas
 - Segurança e confiabilidade
 - Auditoria aberta e simplificada
+
+# Jornadas de Usuário - TWA Open Lottery
+
+## 1. Apostador
+
+1. Realizar uma aposta
+   - Abre o TWA Open Lottery no Telegram 
+   - Conecta sua carteira Ton usando Ton Connect
+   - Seleciona o animal desejado
+   - Insere o valor da aposta
+   - Confirma a transação na carteira
+   - Recebe confirmação da aposta realizada
+
+2. Verificar resultado de um sorteio
+   - Abre o TWA Open Lottery
+   - Navega para a seção de resultados
+   - Seleciona o sorteio desejado
+   - Visualiza o animal sorteado e os ganhadores
+
+3. Resgatar prêmio de uma aposta ganhadora  
+   - Abre o TWA no sorteio em que foi ganhador
+   - Clica no botão "Resgatar Prêmio"
+   - Confirma a transação na carteira
+   - Recebe o valor do prêmio em sua carteira
+
+## 2. Bicheiro (Administrador)
+
+1. Visualizar estatísticas dos sorteios
+   - Faz login como administrador no TWA
+   - Acessa o dashboard de gestão
+   - Visualiza dados como total de apostas, prêmios acumulados, etc
+   - Filtra os dados por período
+
+2. Gerenciar sorteios
+   - Acessa o dashboard de gestão 
+   - Navega para a área de gestão de sorteios
+   - Cria um novo sorteio definindo data, hora e prêmio inicial
+   - Acompanha sorteios em andamento
+   - Realiza o sorteio manualmente se necessário
+
+3. Gerenciar animais e probabilidades
+   - Acessa as configurações de animais no dashboard
+   - Visualiza a lista de animais cadastrados 
+   - Altera a probabilidade de cada animal ser sorteado
+   - Adiciona ou remove animais da lista
+
+4. Acompanhar transações e pagamentos
+   - Acessa o histórico de transações no dashboard
+   - Visualiza o status das transações (apostas e resgates)
+   - Confere se os prêmios foram pagos corretamente
+   - Investiga transações suspeitas se necessário
+
+5. Configurar parâmetros do contrato
+   - Acessa as configurações do contrato no dashboard
+   - Define parâmetros como taxa de administração, prêmio mínimo, etc
+   - Implanta uma nova versão do contrato se necessário
+   - Monitora o funcionamento do contrato inteligente
 
 ## 🤝 Contribuindo
 
