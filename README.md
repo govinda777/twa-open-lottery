@@ -354,22 +354,6 @@ O sistema implementa várias camadas de segurança:
    };
    ```
 
-### Testes
-
-A estrutura de testes segue a organização do projeto:
-
-```
-tests/
-  ├── components/
-  │   └── BetForm.test.tsx
-  ├── contracts/
-  │   └── AnimalLottery.test.ts
-  └── hooks/
-      └── useAnimalLottery.test.ts
-```
-
-[... resto do documento ...]
-
 ## 📄 Licença
 
 Este projeto está sob a Licença MIT. Veja o arquivo [LICENSE](LICENSE) para detalhes.
