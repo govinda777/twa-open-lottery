@@ -197,10 +197,6 @@ Este projeto oferece:
    ```
 5. Abra um Pull Request
 
-# TWA Open Lottery
-
-[... seções anteriores ...]
-
 ## 🏗 Arquitetura do Projeto
 
 O TWA Open Lottery segue uma arquitetura modular e bem organizada, facilitando a manutenção e escalabilidade do sistema.
