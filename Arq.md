@@ -1,4 +1,95 @@
 # TWA Open Lottery: A Deep Dive into Hexagonal Architecture
+```
+graph TD
+    subgraph Adapters[Primary/Driving Adapters]
+        UI[React UI Components]
+        TWA[Telegram Web App]
+        TonC[TON Connect UI]
+    end
+
+    subgraph Core[Domain Core]
+        subgraph UseCases[Use Cases/Application Layer]
+            BetUC[Betting Use Cases]
+            DrawUC[Draw Management Use Cases]
+            AdminUC[Admin Use Cases]
+        end
+
+        subgraph Domain[Domain Layer]
+            BE[Bet Entity]
+            DE[Draw Entity]
+            AE[Animal Entity]
+            PE[Player Entity]
+        end
+
+        subgraph Ports[Ports]
+            subgraph InPorts[Input Ports]
+                BP[Betting Port]
+                DP[Draw Port]
+                AP[Admin Port]
+            end
+
+            subgraph OutPorts[Output Ports]
+                CP[Contract Port]
+                SP[Storage Port]
+                EP[Event Port]
+            end
+        end
+    end
+
+    subgraph SecAdapters[Secondary/Driven Adapters]
+        TC[TON Client]
+        SC[Smart Contract]
+        Query[React Query Cache]
+    end
+
+    %% Primary Adapter connections
+    UI --> BP
+    UI --> DP
+    UI --> AP
+    TWA --> BP
+    TonC --> BP
+
+    %% Use Cases to Ports
+    BetUC --> BE
+    DrawUC --> DE
+    AdminUC --> AE
+    BP --> BetUC
+    DP --> DrawUC
+    AP --> AdminUC
+
+    %% Domain Entity relationships
+    BE --> PE
+    BE --> AE
+    DE --> BE
+
+    %% Output Ports to Secondary Adapters
+    CP --> TC
+    CP --> SC
+    SP --> Query
+    EP --> TWA
+
+    %% Use Cases to Output Ports
+    BetUC --> CP
+    BetUC --> SP
+    BetUC --> EP
+    DrawUC --> CP
+    DrawUC --> SP
+    DrawUC --> EP
+    AdminUC --> CP
+    AdminUC --> SP
+
+    classDef primary fill:#a8d5ff,stroke:#2b79c2
+    classDef core fill:#ffe7a8,stroke:#c2992b
+    classDef domain fill:#ffc8a8,stroke:#c2602b
+    classDef ports fill:#a8ffc1,stroke:#2bc24d
+    classDef secondary fill:#d5a8ff,stroke:#792bc2
+
+    class UI,TWA,TonC primary
+    class UseCases,Domain core
+    class BE,DE,AE,PE domain
+    class InPorts,OutPorts ports
+    class TC,SC,Query secondary
+```
 
 ## Introdução
 
